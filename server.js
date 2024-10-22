@@ -1,12 +1,24 @@
 // server.js
+import cookieParser from 'cookie-parser';
 import express from 'express'
+import rootRouter from './src/routes/root.router.js';
 
 const app = express()
 const port = 8000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use(express.json());
+app.use(express.static("."));
+
+// Create middleware allowing FE to call API to BE
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+app.use(rootRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

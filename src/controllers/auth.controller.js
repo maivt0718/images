@@ -28,4 +28,7 @@ export const auth = {
       return res.status(status.INTERNAL_SERVER).json({ message: `${error}` });
     }
   },
+  authRegister: async (req, res, next) => {
+    
+  }
 };

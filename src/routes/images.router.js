@@ -3,6 +3,6 @@ import { imagesController } from '../controllers/images.controller.js'
 
 const imagesRouter = express.Router()
 
-imagesRouter.use('/getAllImages', imagesController.getAllImages)
+imagesRouter.get('/getAllImages', imagesController.getAllImages)
 
 export default imagesRouter

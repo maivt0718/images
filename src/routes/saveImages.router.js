@@ -3,6 +3,6 @@ import { saveImagesController } from '../controllers/saveImage.controller.js'
 
 const saveImageRouter = express.Router()
 
-saveImageRouter.use('/getAllSaveImages', saveImagesController.getAllSaveImagesInfo)
+saveImageRouter.get('/getAllSaveImages', saveImagesController.getAllSaveImagesInfo)
 
 export default saveImageRouter

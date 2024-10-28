@@ -12,5 +12,13 @@ export const userController = {
             return res.status(status.INTERNAL_SERVER).json({message: `${error}`})
        }
 
+    },
+    uploadAvarta: async (req, res, next) => {
+        try {
+            
+        } catch (error) {
+            return res.status(status.INTERNAL_SERVER).json({message: `${error}`})
+        }
     }
+
 }

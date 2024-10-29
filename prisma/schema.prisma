@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -18,6 +19,7 @@ model binh_luan {
 
   @@index([hinh_id], map: "hinh_id")
   @@index([nguoi_dung_id], map: "nguoi_dung_id")
+  @@unique([nguoi_dung_id, hinh_id]) // Composite unique constraint
 }
 
 model hinh_anh {

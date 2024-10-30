@@ -54,6 +54,7 @@ model nguoi_dung {
   tuoi          Int?
   anh_dai_dien  String?     @db.VarChar(255)
   secret        String?     @db.VarChar(255)
+  refresh_token String?     @db.Text()
   binh_luan     binh_luan[]
   hinh_anh      hinh_anh[]
   luu_anh       luu_anh[]

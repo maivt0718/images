@@ -1,8 +1,11 @@
-import express from 'express'
-import { saveImagesController } from '../controllers/saveImage.controller.js'
+import express from "express";
+import { saveImagesController } from "../controllers/saveImage.controller.js";
 
-const saveImageRouter = express.Router()
+const saveImageRouter = express.Router();
 
-saveImageRouter.get('/getAllSaveImages', saveImagesController.getAllSaveImagesInfo)
+saveImageRouter.get(
+  "/getAllSaveImages",
+  saveImagesController.getAllSaveImagesInfo
+);
 
-export default saveImageRouter
+export default saveImageRouter;

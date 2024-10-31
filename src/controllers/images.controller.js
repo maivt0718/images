@@ -10,7 +10,6 @@ export const imagesController = {
     try {
       let newAccessToken = res.locals.access_token
       let images = await prisma.hinh_anh.findMany();
-      console.log(newAccessToken)
       return res.status(status.OK).json({images, data: newAccessToken});
     } catch (error) {
       return res.status(status.INTERNAL_SERVER).json({ message: `${error}` });

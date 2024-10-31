@@ -22,7 +22,7 @@ let refreshTokenPrivateKey = fs.readFileSync(
 export const createTokenAsyncKey = (data) => {
   return jwt.sign({ payload: data }, accessTokenPrivateKey, {
     algorithm: "RS256",
-    expiresIn: "10s",
+    expiresIn: "10m",
   });
 };
 
@@ -35,7 +35,6 @@ export const createRefTokenAsyncKey = (data) => {
 
 export const verifyTokenAsyncKey = (token) => {
   try {
-    console.log(accessTokenPublicKey);
     jwt.verify(token, accessTokenPublicKey);
 
     return { isValid: true, error: null };
@@ -46,6 +45,16 @@ export const verifyTokenAsyncKey = (token) => {
 };
 
 export const middlewareAsyncToken = (req, res, next) => {
+  let { token } = req.headers;
+  let checktoken = verifyTokenAsyncKey(token);
+  if (checktoken.isValid) {
+    next();
+  } else {
+    return res.status(status.NOT_AUTHORISE).json({ message: `Unauthorised` });
+  }
+};
+
+export const middlewareAsyncTokenCustom = (req, res, next) => {
   try {
     let { token } = req.headers;
 

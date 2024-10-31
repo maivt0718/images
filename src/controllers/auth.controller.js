@@ -12,7 +12,6 @@ const prisma = new PrismaClient();
 export const auth = {
   authLogin: async (req, res, next) => {
     const { email = "", id = "", mat_khau } = req.body;
-    console.log(email, id, mat_khau);
     try {
       let user = await prisma.nguoi_dung.findFirst({
         where: {

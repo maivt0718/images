@@ -9,18 +9,18 @@ imagesRouter.get(
   middlewareAsyncToken,
   imagesController.getAllImages
 );
-imagesRouter.get("/getImagesByName", imagesController.findImageByName);
+imagesRouter.get("/getImagesByName", middlewareAsyncToken, imagesController.findImageByName);
 imagesRouter.get(
-  "/getImagesAndItsOwner",
+  "/getImagesAndItsOwner", middlewareAsyncToken,
   imagesController.getImageInfoAndItsOwner
 );
 imagesRouter.get(
-  "/getCommentsByImageID/:imageID",
+  "/getCommentsByImageID/:imageID", middlewareAsyncToken,
   imagesController.getCommentsByImageID
 );
-imagesRouter.get("/checkSaveImage/:imageID", imagesController.checkSaveImage);
+imagesRouter.get("/checkSaveImage/:imageID", middlewareAsyncToken, imagesController.checkSaveImage);
 imagesRouter.post(
-  "/saveCommentWithImage",
+  "/saveCommentWithImage", middlewareAsyncToken,
   imagesController.saveCommentWithImage
 );
 

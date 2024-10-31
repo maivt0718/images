@@ -1,6 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import { status } from "../../utils/const.js";
-
+import bcrypt from "bcrypt";
+import speakeasy from "speakeasy";
+import {
+  createRefTokenAsyncKey,
+  createTokenAsyncKey,
+} from "../../config/jwt.js";
 const prisma = new PrismaClient();
 
 export const userController = {
@@ -12,7 +17,7 @@ export const userController = {
       return res.status(status.INTERNAL_SERVER).json({ message: `${error}` });
     }
   },
-// put thông tin người dùng 
+  // put thông tin người dùng
   updateUser: async (req, res, next) => {
     try {
       const { nguoi_dung_id } = req.params;
@@ -33,18 +38,36 @@ export const userController = {
       if (!users) {
         return res.status(status.NOT_FOUND).json({ message: "User not found" });
       }
-      await prisma.nguoi_dung.update({
-        data: {
-          ho_ten,
-          mat_khau,
-          tuoi,
-          email,
-          anh_dai_dien,
-        },
-        where: {
-          nguoi_dung_id: Number(nguoi_dung_id),
-        },
-      });
+      const passwordMatch =
+        (await bcrypt.compareSync(mat_khau, users.mat_khau)) ||
+        users.mat_khau == mat_khau;
+      if (passwordMatch) {
+        let access_token = createTokenAsyncKey(users.nguoi_dung_id);
+        let refresh_token = createRefTokenAsyncKey(users.nguoi_dung_id);
+
+        await prisma.nguoi_dung.update({
+          data: {
+            ho_ten,
+            mat_khau,
+            tuoi,
+            email,
+            anh_dai_dien,
+          },
+          where: {
+            nguoi_dung_id: Number(nguoi_dung_id),
+          },
+        });
+        res.cookie("refresh_token", refresh_token, {
+          httpOnly: true, // Cookie không thể truy cập từ javascript
+          secure: false, // để chạy dưới localhost
+          sameSite: "Lax", // để đảm bảo cookie được gửi trong các domain khác nhau
+          maxAge: 7 * 24 * 60 * 60 * 1000, //thời gian tồn tại cookie trong browser
+        });
+        return res
+          .status(status.FOUND)
+          .json({ message: `User found`, data: access_token });
+      }
+
       return res
         .status(status.OK)
         .json({ message: "User updated successfully" });

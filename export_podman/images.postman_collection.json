@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "24f9dbe6-836e-499b-8a35-7c32618f2d9f",
+		"name": "images",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38014518"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoyMSwiaWF0IjoxNzMwNjE4ODgxLCJleHAiOjE3MzA2MTk0ODF9.Rzsl8zUwrP9sjIWKYbHgCWA8zwDc6iIPu9f1E9x44RJktR-wthuiayrJlUjTFv8c2QOkA3iChme8tF1vx2usSyhIIShxOxPDiCupe42tpLPSsPCWjdFIgWjDlYcivBn1-DWX0bOWGdVZK1QKusQxC0snVTkrjSBF_Jl542KsP5fVJQ1VHRoRPAsCPOFJ6mLF20NAFAPHg6N4IKlmYEEG3eEQiJnZU21OZyM4veRarfFa3_6DV_1Ei9Btoq8jN77mOiLNK2GSdFif-Al3hsGY3eENTwPuG-g5kvzO8AUKPczraOpGfZ0eUrwUVOqb9uk855NDv9i3wNR1JTxwRBblPg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/users/getAllUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"getAllUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"a@a.com\",\n    \"mat_khau\": \"test@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "a@a.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test@123",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/Users/hana/Desktop/Screenshot 2024-10-21 at 21.59.01.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "extend_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/auth/extend_token",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"extend_token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "avarta",
+			"item": [
+				{
+					"name": "uploadAvartaToCloud",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/Users/hana/Desktop/Screenshot 2024-10-21 at 21.59.01.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/users/uploadAvartaToCloud",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"uploadAvartaToCloud"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "images",
+			"item": [
+				{
+					"name": "getImagesByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/images/getImagesByName?name=flower",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"images",
+								"getImagesByName"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "flower"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getImagesAndItsOwner",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 3}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/images/getImagesAndItsOwner",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"images",
+								"getImagesAndItsOwner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkSaveImage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/images/checkSaveImage/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"images",
+								"checkSaveImage",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveCommentWithImage",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoyMSwiaWF0IjoxNzMwMzkwNDE2LCJleHAiOjE3MzAzOTEwMTZ9.Ncn93TTv5qvCZvkGcmdPs1tnBbZHOR96PqAkkYZaWhspPQpmmZMEGoTgRRJPe-SuAh2VvoqBM10zlBR2O8hF4TEXXfS2n7lb8V_sU7XF3VtIIC7y6XTCUYuvs1qzPR32kfKz3JsXX0U71cLdXLag3I6MsQ15K_bmrqL55e4UmAkv5ReKg-jptD1lhn2U6aWMSG1QtN-YuWssbt7-x0mGnmEFrleWvQIhU50XJ_XzUkUZccrPw51ZLUEVJaNKloMaUFdSNXmeZHDuNeQ0XJfN166diQiXOxiXhe1nVEaPDCo2Kxx_TQuF6TXKXf_mV8sPNezXnAVERtPt41IX-glomQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"image_id\": 3,\n    \"comment\": \"Very bad\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/images/saveCommentWithImage",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"images",
+								"saveCommentWithImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllImage",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoyMSwiaWF0IjoxNzMwMzkwNDE2LCJleHAiOjE3MzAzOTEwMTZ9.Ncn93TTv5qvCZvkGcmdPs1tnBbZHOR96PqAkkYZaWhspPQpmmZMEGoTgRRJPe-SuAh2VvoqBM10zlBR2O8hF4TEXXfS2n7lb8V_sU7XF3VtIIC7y6XTCUYuvs1qzPR32kfKz3JsXX0U71cLdXLag3I6MsQ15K_bmrqL55e4UmAkv5ReKg-jptD1lhn2U6aWMSG1QtN-YuWssbt7-x0mGnmEFrleWvQIhU50XJ_XzUkUZccrPw51ZLUEVJaNKloMaUFdSNXmeZHDuNeQ0XJfN166diQiXOxiXhe1nVEaPDCo2Kxx_TQuF6TXKXf_mV8sPNezXnAVERtPt41IX-glomQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/images/getAllImages",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"images",
+								"getAllImages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "getCommentsByImageID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/images/getCommentsByImageID/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"images",
+								"getCommentsByImageID",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "photoManagementPage",
+			"item": [
+				{
+					"name": "getInfoUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoyMSwiaWF0IjoxNzMwNjE4ODgxLCJleHAiOjE3MzA2MTk0ODF9.Rzsl8zUwrP9sjIWKYbHgCWA8zwDc6iIPu9f1E9x44RJktR-wthuiayrJlUjTFv8c2QOkA3iChme8tF1vx2usSyhIIShxOxPDiCupe42tpLPSsPCWjdFIgWjDlYcivBn1-DWX0bOWGdVZK1QKusQxC0snVTkrjSBF_Jl542KsP5fVJQ1VHRoRPAsCPOFJ6mLF20NAFAPHg6N4IKlmYEEG3eEQiJnZU21OZyM4veRarfFa3_6DV_1Ei9Btoq8jN77mOiLNK2GSdFif-Al3hsGY3eENTwPuG-g5kvzO8AUKPczraOpGfZ0eUrwUVOqb9uk855NDv9i3wNR1JTxwRBblPg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/photoManagementPage/getInfoUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"photoManagementPage",
+								"getInfoUser"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSavedImages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoyMSwiaWF0IjoxNzMwNjE4ODgxLCJleHAiOjE3MzA2MTk0ODF9.Rzsl8zUwrP9sjIWKYbHgCWA8zwDc6iIPu9f1E9x44RJktR-wthuiayrJlUjTFv8c2QOkA3iChme8tF1vx2usSyhIIShxOxPDiCupe42tpLPSsPCWjdFIgWjDlYcivBn1-DWX0bOWGdVZK1QKusQxC0snVTkrjSBF_Jl542KsP5fVJQ1VHRoRPAsCPOFJ6mLF20NAFAPHg6N4IKlmYEEG3eEQiJnZU21OZyM4veRarfFa3_6DV_1Ei9Btoq8jN77mOiLNK2GSdFif-Al3hsGY3eENTwPuG-g5kvzO8AUKPczraOpGfZ0eUrwUVOqb9uk855NDv9i3wNR1JTxwRBblPg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/photoManagementPage/getSavedImages/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"photoManagementPage",
+								"getSavedImages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteImage",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
